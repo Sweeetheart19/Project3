@@ -60,6 +60,7 @@ private:
             return contains(node->right, t);
     }
 
+
 public:
     BST() : root(nullptr) {}
 
@@ -172,7 +173,6 @@ private:
             zapiszDoStrumienia(strumien, wierzcholek->right);
         }
     }
-
 };
 
 // Funkcja pomocnicza do wyświetlania menu

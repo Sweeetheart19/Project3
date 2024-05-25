@@ -74,17 +74,3 @@ public:
 
 };
 
-// Funkcja pomocnicza do wyœwietlania menu
-void wyswietlMenu() {
-    cout << "Menu:\n";
-    cout << "1. Dodaj urzadzenie\n";
-    cout << "2. Usun urzadzenie\n";
-    cout << "3. Wyszukaj urzadzenie\n";
-    cout << "4. Wyswietl wszystkie urzadzenia\n";
-    cout << "5. Zapisz urzadzenia do pliku\n";
-    cout << "6. Odczytaj urzadzenia z pliku\n";
-    cout << "7. Sprawdz, czy obiekt znajduje sie w fabryce\n";
-    cout << "8. Rotacja w prawo\n";
-    cout << "0. Wyjdz\n";
-    cout << "Wybierz opcje: ";
-}
