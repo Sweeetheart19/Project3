@@ -2,7 +2,6 @@
 #include <string>
 #include <fstream>
 #include "urzadzenie.cpp"
-#include "fabryka.cpp"
 
 using namespace std;
 
@@ -175,6 +174,78 @@ private:
     }
 };
 
+class Fabryka {
+private:
+    BST<Urzadzenie> bstUrzadzenie;
+
+public:
+    // Metoda do dodawania urządzenia do fabryki
+    void dodajUrzadzenie(const Urzadzenie& urzadzenie) {
+        bstUrzadzenie.insert(urzadzenie);
+        cout << "Urzadzenie " << urzadzenie << " dodane do fabryki.\n";
+    }
+
+    // Metoda do usuwania urządzenia z fabryki
+    void usunUrzadzenie(const Urzadzenie& urzadzenie) {
+        if (bstUrzadzenie.search(urzadzenie) != nullptr) {
+            bstUrzadzenie.remove(urzadzenie);
+            cout << "Urzadzenie " << urzadzenie << " usuniete z fabryki.\n";
+        }
+        else {
+            cout << "Urzadzenie " << urzadzenie << " nie znajduje sie w fabryce.\n";
+        }
+    }
+
+    // Metoda do wyszukiwania urządzenia w fabryce
+    void szukajUrzadzenie(const Urzadzenie& urzadzenie) {
+        if (bstUrzadzenie.search(urzadzenie) != nullptr) {
+            cout << "Urzadzenie " << urzadzenie << " znajduje sie w fabryce.\n";
+        }
+        else {
+            cout << "Urzadzenie " << urzadzenie << " nie znajduje sie w fabryce.\n";
+        }
+    }
+
+    // Metoda do wyswietlania wszystkich urządzeń w fabryce
+    void wyswietlWszystkieUrzadzenia() {
+        cout << "Urzadzenia w fabryce:\n";
+        bstUrzadzenie.inorder();
+    }
+
+    // Zapisuje obiekty z drzewa do pliku
+    void zapiszDoPliku(const std::string& nazwaPliku) {
+        try {
+            bstUrzadzenie.zapiszDoPliku(nazwaPliku);
+        }
+        catch (const std::exception& e) {
+            cerr << e.what() << endl;
+        }
+    }
+
+    // Odczytuje obiekty z pliku i wstawia je do drzewa
+    void odczytajZPliku(const std::string& nazwaPliku) {
+        try {
+            bstUrzadzenie.odczytajZPliku(nazwaPliku);
+        }
+        catch (const std::exception& e) {
+            cerr << e.what() << endl;
+        }
+    }
+
+    // Metoda do sprawdzania, czy obiekt znajduje się w fabryce
+    /*bool contains(const Urzadzenie& urzadzenie) {
+        return bstUrzadzenie.contains(urzadzenie);
+    }
+
+    // Metoda do rotacji w prawo
+    void rotacjaWPrawo() {
+        if (bstUrzadzenie.root != nullptr) {
+            bstUrzadzenie.root = bstUrzadzenie.rotateRight(bstUrzadzenie.root);
+        }
+    }*/
+
+};
+
 // Funkcja pomocnicza do wyświetlania menu
 void wyswietlMenu() {
     cout << "Menu:\n";
@@ -272,7 +343,7 @@ int main() {
             }
             break;
         }
-        case 7: {
+              /* case 7: {
             string nazwa;
             int id;
             cout << "Podaj nazwe urzadzenia do sprawdzenia: ";
@@ -290,7 +361,7 @@ int main() {
         case 8:
             fabryka.rotacjaWPrawo();
             cout << "Wykonano rotacje w prawo.\n";
-            break;
+            break;*/
         case 0:
             cout << "Koniec programu.\n";
             break;
@@ -298,7 +369,7 @@ int main() {
             cout << "Niepoprawna opcja. Wybierz jeszcze raz.\n";
         }
 
-    } while (wybor != 0);
+        } while (wybor != 0);
 
-    return 0;
-}
+        return 0;
+    }

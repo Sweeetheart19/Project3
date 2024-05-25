@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include "urzadzenie.cpp"
+#include "Project#.cpp"
 using namespace std;
 
 class Fabryka {
